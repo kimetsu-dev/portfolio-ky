@@ -24,7 +24,7 @@
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
 
-  html { scroll-behavior: smooth; }
+  html { scroll-behavior: smooth; overflow-x: hidden; }
 
   body {
     background: var(--navy);
@@ -35,7 +35,7 @@
     overflow-x: hidden;
   }
 
-  /* ── SUBTLE CINEMATIC FILM GRAIN ── */
+  
   .film-grain {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -45,7 +45,7 @@
     background-image: url('data:image/svg+xml;utf8,%3Csvg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg"%3E%3Cfilter id="noiseFilter"%3E%3CfeTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="3" stitchTiles="stitch"/%3E%3C/filter%3E%3Crect width="100%25" height="100%25" filter="url(%23noiseFilter)"/%3E%3C/svg%3E');
   }
 
-  /* ── NAV ── */
+  
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -87,7 +87,7 @@
     text-shadow: 0 0 8px var(--mint-glow);
   }
 
-  /* ── HERO ── */
+  
   #hero {
     min-height: 100vh;
     display: flex;
@@ -194,7 +194,7 @@
     background: rgba(0,200,150,0.05);
   }
 
-  /* ── ANIMATED MASCOT COMPONENT ── */
+  
   .mascot-container {
     position: relative;
     width: 100%;
@@ -204,7 +204,7 @@
     align-items: center;
   }
 
-  /* ── EARTH — canvas globe ── */
+  
   .earth-wrapper {
     position: absolute;
     bottom: 20px;
@@ -223,10 +223,10 @@
     display: block;
   }
 
-  /* ── ROCKET (futuristic multi-stage) ── */
+  
   .rocket-group {
     position: absolute;
-    /* starts far top-right, arcs to top of earth */
+    
     top: 0%;
     right: 5%;
     transform-origin: center bottom;
@@ -242,7 +242,7 @@
     position: relative;
   }
 
-  /* Thruster flame — layered for realism */
+  
   .thruster {
     position: absolute;
     bottom: -30px;
@@ -259,7 +259,7 @@
     filter: blur(1.2px);
   }
 
-  /* Smoke trail puffs */
+  
   .smoke {
     position: absolute;
     border-radius: 50%;
@@ -275,23 +275,20 @@
     100% { transform: translateY(38px) scale(2.6); opacity: 0; }
   }
 
-  /* ── LANDING GROUP — anchored to top of earth ── */
-  /* Phase 1 (0–6s): hidden inside rocket, rocket is animating in
-     Phase 2 (6–7s): astronaut slides out of rocket hatch
-     Phase 3 (7–8s): astronaut jumps/descends onto earth top
-     Phase 4 (8s+): standing on earth, flag plants, idle float */
+  
+  
 
   .landing-group {
     position: absolute;
-    /* aligned to top-center of earth-wrapper; earth-wrapper bottom=20px, height=300px → top of earth at container bottom - 20 - 300 = 260px from bottom */
-    bottom: 324px; /* top of 300px earth + 20px bottom offset + a few px for feet */
+    
+    bottom: 324px; 
     left: 50%;
     transform: translateX(-50%);
     display: flex;
     align-items: flex-end;
     opacity: 0;
     z-index: 20;
-    /* sequence: wait for rocket → emerge from above → land on earth → float */
+    
     animation:
       astronautEmerge 1.2s ease-out 5.8s forwards,
       astronautLand   1s ease-in  7s forwards,
@@ -306,7 +303,7 @@
     filter: drop-shadow(0 8px 16px rgba(0,0,0,0.75));
   }
 
-  /* ── FLAG (enhanced) ── */
+  
   .flag-pole {
     width: 4px;
     height: 100px;
@@ -352,10 +349,9 @@
     text-shadow: 0 0 10px rgba(0,200,150,0.6);
   }
 
-  /* ── ANIMATIONS ── */
+  
 
-  /* Rocket arc: enters from top-right, sweeps down to hover above earth top,
-     then slowly descends and vanishes as if landing / docking */
+  
   @keyframes rocketFlyIn {
     0%   { top: -8%;  right: -10%; transform: rotate(-50deg) scale(0.6); opacity: 0.7; }
     20%  { top:  5%;  right:  30%; transform: rotate(-30deg) scale(0.9); opacity: 1;   }
@@ -370,7 +366,7 @@
     100% { transform: translateX(-50%) scaleY(1.4)  scaleX(1.15); opacity: 1;   }
   }
 
-  /* Astronaut emerges from rocket top and arcs down onto earth surface */
+  
   @keyframes astronautEmerge {
     0%   { opacity: 0; transform: translateX(-50%) translateY(-60px); }
     40%  { opacity: 1; transform: translateX(-50%) translateY(-90px); }
@@ -400,7 +396,7 @@
     100% { transform: rotateY(18deg) rotateZ(-3.5deg); }
   }
 
-  /* ── SECTION BASE ── */
+  
   section {
     padding: 6rem 4rem;
     max-width: 1200px;
@@ -410,7 +406,7 @@
   }
 
   #about {
-    overflow: visible;
+    overflow: hidden;
   }
 
   .section-label {
@@ -447,7 +443,7 @@
     margin: 0;
   }
 
-  /* ── ABOUT ── */
+  
   .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -467,10 +463,9 @@
 
   .about-stats {
     display: flex;
-    justify-content: flex-end;
+    justify-content: center;
     align-items: center;
-    overflow: visible;
-    margin-right: -4rem;
+    overflow: hidden;
   }
 
   .stat-card {
@@ -506,7 +501,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    overflow: visible;
+    overflow: hidden;
+    width: 100%;
   }
 
   #orbitalCanvas {
@@ -515,7 +511,7 @@
     filter: drop-shadow(0 0 22px rgba(0,200,150,0.18));
   }
 
-  /* ── SKILLS ── */
+  
   #skills { border-top: 1px solid var(--border); }
 
   .skills-intro {
@@ -609,7 +605,7 @@
     letter-spacing: 0.04em;
   }
 
-  /* ── EDUCATION ── */
+  
   #education { border-top: 1px solid var(--border); }
 
   .edu-timeline {
@@ -687,7 +683,7 @@
     margin-top: 0.35rem;
   }
 
-  /* ── TRAININGS ── */
+  
   #trainings { border-top: 1px solid var(--border); }
 
   .training-grid {
@@ -744,7 +740,7 @@
     margin-top: 0.25rem;
   }
 
-  /* ── PROJECTS ── */
+  
   #projects { border-top: 1px solid var(--border); }
 
   .project-card {
@@ -883,7 +879,7 @@
     .proj-divider { display: none; }
   }
 
-  /* ── CONTACT ── */
+  
   #contact {
     border-top: 1px solid var(--border);
     text-align: center;
@@ -929,7 +925,7 @@
 
   .contact-link .icon { font-size: 16px; }
 
-  /* ── FOOTER ── */
+  
   footer {
     border-top: 1px solid var(--border);
     padding: 2rem 4rem;
@@ -947,7 +943,7 @@
     letter-spacing: 0.04em;
   }
 
-  /* ── BG DECO WITH STARS ── */
+  
   .bg-deco {
     position: fixed;
     top: 0; left: 0; right: 0; bottom: 0;
@@ -989,7 +985,7 @@
     bottom: 10%; left: -100px;
   }
 
-  /* ── ANIMATIONS ── */
+  
   @keyframes fadeUp {
     from { opacity: 0; transform: translateY(24px); }
     to   { opacity: 1; transform: translateY(0); }
@@ -1006,13 +1002,50 @@
   .hero-actions { animation: fadeUp 0.6s ease both; animation-delay: 0.4s; }
   .mascot-container { animation: fadeUp 0.7s ease both; animation-delay: 0.5s; }
 
-  /* ── RESPONSIVE ── */
+  
+  .nav-hamburger {
+    display: none;
+    flex-direction: column;
+    gap: 5px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 6px 4px;
+    z-index: 101;
+  }
+  .nav-hamburger span {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background: var(--white);
+    border-radius: 2px;
+    transition: transform 0.3s, opacity 0.3s;
+  }
+  .nav-hamburger.active span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .nav-hamburger.active span:nth-child(2) { opacity: 0; }
+  .nav-hamburger.active span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+  .orbital-wrapper {
+    width: 100%;
+    overflow: visible;
+    display: flex;
+    justify-content: center;
+  }
+
+  @media (max-width: 1024px) {
+    nav { padding: 1rem 2rem; }
+    section { padding: 5rem 2rem; }
+    #hero { padding: 8rem 2rem 4rem; }
+    .hero-grid { gap: 2.5rem; }
+    .mascot-container { height: 500px; }
+  }
+
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { gap: 1.5rem; }
     section { padding: 4rem 1.5rem; }
     #hero { padding: 7rem 1.5rem 3rem; }
-    .hero-grid { grid-template-columns: 1fr; gap: 4rem; text-align: center; }
+    .hero-grid { grid-template-columns: 1fr; gap: 3rem; text-align: center; }
     .hero-tag { justify-content: center; }
     .hero-actions { justify-content: center; }
     .hero-desc { margin: 0 auto 2.5rem; }
@@ -1023,15 +1056,54 @@
   }
 
   @media (max-width: 600px) {
+    .nav-hamburger { display: flex; }
+    .nav-links {
+      display: none;
+      position: fixed;
+      top: 56px;
+      left: 0; right: 0;
+      background: rgba(7,13,26,0.98);
+      backdrop-filter: blur(16px);
+      flex-direction: column;
+      gap: 0;
+      border-bottom: 1px solid var(--border);
+      z-index: 99;
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li a {
+      display: block;
+      padding: 1rem 1.5rem;
+      border-bottom: 1px solid var(--border);
+      font-size: 13px;
+    }
     .skills-grid { grid-template-columns: 1fr; }
     .about-stats { grid-template-columns: 1fr 1fr; }
     .edu-item { grid-template-columns: 80px 1fr; gap: 1rem; }
-    .nav-links { display: none; }
-    .mascot-container { height: 440px; }
-    .earth-wrapper { width: 220px; height: 220px; bottom: 15px; }
-    .cyber-earth { width: 220px; height: 220px; }
-    .landing-group { bottom: 240px; }
+    .mascot-container { height: 400px; }
+    .earth-wrapper { width: 200px; height: 200px; bottom: 15px; }
+    #earthCanvas { width: 200px !important; height: 200px !important; }
+    .landing-group { bottom: 220px; }
     .astronaut { width: 52px; height: 70px; }
+    .training-grid { gap: 0.75rem; }
+    h1 { font-size: clamp(2.4rem, 10vw, 3.5rem); }
+  }
+
+  @media (max-width: 480px) {
+    section { padding: 3rem 1rem; }
+    #hero { padding: 6rem 1rem 3rem; }
+    nav { padding: 0.9rem 1rem; }
+    .mascot-container { height: 340px; }
+    .earth-wrapper { width: 170px; height: 170px; bottom: 10px; }
+    #earthCanvas { width: 170px !important; height: 170px !important; }
+    .landing-group { bottom: 184px; }
+    .astronaut { width: 44px; height: 58px; }
+    .flag-pole { height: 72px; }
+    .flag-cloth { width: 80px; height: 40px; }
+    .flag-text { font-size: 9px; }
+    .edu-item { grid-template-columns: 70px 1fr; gap: 0.75rem; padding: 0 0 2rem 1.5rem; }
+    .contact-link { padding: 0.75rem 1rem; font-size: 13px; }
+    .btn-primary, .btn-outline { padding: 0.7rem 1.4rem; }
+    .stat-card .num { font-size: 1.6rem; }
   }
 </style>
 </head>
@@ -1047,7 +1119,8 @@
 
 <nav>
   <div class="nav-logo">kimetsu.dev</div>
-  <ul class="nav-links">
+  <button class="nav-hamburger" id="navHamburger" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+  <ul class="nav-links" id="navLinks">
     <li><a href="#about">About</a></li>
     <li><a href="#skills">Skills</a></li>
     <li><a href="#projects">Projects</a></li>
@@ -1057,7 +1130,7 @@
   </ul>
 </nav>
 
-<section id="hero" style="max-width:100%; padding-left:4rem; padding-right:4rem;">
+<section id="hero">
   <div class="hero-grid">
     <div>
       <div class="hero-tag">Available for Internship · 2026</div>
@@ -1073,15 +1146,15 @@
 
     <div class="mascot-container">
         
-        <!-- FUTURISTIC ROCKET -->
+        
         <div class="rocket-group">
             <div class="smoke s1"></div>
             <div class="smoke s2"></div>
             <div class="smoke s3"></div>
-            <!-- Futuristic multi-stage rocket SVG -->
+            
             <svg class="rocket" viewBox="0 0 72 140" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
-                <!-- Body metallic gradient -->
+                
                 <linearGradient id="bodyGrad" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
                   <stop offset="0%"   stop-color="#8898b0"/>
                   <stop offset="25%"  stop-color="#c8d4e8"/>
@@ -1089,51 +1162,51 @@
                   <stop offset="75%"  stop-color="#c0cce0"/>
                   <stop offset="100%" stop-color="#7a8aa0"/>
                 </linearGradient>
-                <!-- Nose gradient -->
+                
                 <linearGradient id="noseGrad" x1="0.15" y1="0" x2="0.85" y2="1" gradientUnits="objectBoundingBox">
                   <stop offset="0%"   stop-color="#d8e4f4"/>
                   <stop offset="40%"  stop-color="#b0c0d8"/>
                   <stop offset="100%" stop-color="#7888a0"/>
                 </linearGradient>
-                <!-- Tip accent -->
+                
                 <linearGradient id="tipGrad" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
                   <stop offset="0%"   stop-color="#ff6060"/>
                   <stop offset="100%" stop-color="#cc2020"/>
                 </linearGradient>
-                <!-- Window -->
+                
                 <radialGradient id="winGrad" cx="35%" cy="32%" r="65%">
                   <stop offset="0%"   stop-color="#e0f8ff"/>
                   <stop offset="40%"  stop-color="#50b8e8"/>
                   <stop offset="100%" stop-color="#0d3a60"/>
                 </radialGradient>
-                <!-- Fin gradient -->
+                
                 <linearGradient id="finGrad" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
                   <stop offset="0%"   stop-color="#9a1818"/>
                   <stop offset="100%" stop-color="#e03030"/>
                 </linearGradient>
-                <!-- Grid fin -->
+                
                 <linearGradient id="gridFinGrad" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
                   <stop offset="0%"   stop-color="#667788"/>
                   <stop offset="100%" stop-color="#99aabb"/>
                 </linearGradient>
-                <!-- Nozzle bell -->
+                
                 <linearGradient id="nozzleGrad" x1="0.5" y1="0" x2="0.5" y2="1" gradientUnits="objectBoundingBox">
                   <stop offset="0%"   stop-color="#8899aa"/>
                   <stop offset="50%"  stop-color="#aabbcc"/>
                   <stop offset="100%" stop-color="#6677888"/>
                 </linearGradient>
-                <!-- Stage-2 band -->
+                
                 <linearGradient id="band1Grad" x1="0" y1="0" x2="1" y2="0" gradientUnits="objectBoundingBox">
                   <stop offset="0%"   stop-color="#223344"/>
                   <stop offset="50%"  stop-color="#334455"/>
                   <stop offset="100%" stop-color="#223344"/>
                 </linearGradient>
-                <!-- Engine cluster ring -->
+                
                 <linearGradient id="clusterGrad" x1="0" y1="0" x2="0" y2="1" gradientUnits="objectBoundingBox">
                   <stop offset="0%"   stop-color="#9ab0c0"/>
                   <stop offset="100%" stop-color="#6888a0"/>
                 </linearGradient>
-                <!-- Glow filter -->
+                
                 <filter id="engineGlow" x="-40%" y="-20%" width="180%" height="200%">
                   <feGaussianBlur in="SourceGraphic" stdDeviation="2" result="blur"/>
                   <feColorMatrix in="blur" type="matrix" values="0 3 3 0 0  0 2 2 0 0.8  0 1 1 0 0.6  0 0 0 18 -4" result="glow"/>
@@ -1141,61 +1214,61 @@
                 </filter>
               </defs>
 
-              <!-- ── STAGE 2 (upper) ── -->
-              <!-- Payload fairing / nose cone (ogive shape) -->
+              
+              
               <path d="M36 2 C30 2 24 10 22 22 L50 22 C48 10 42 2 36 2Z" fill="url(#noseGrad)"/>
-              <!-- Nose tip (ablative cap) -->
+              
               <ellipse cx="36" cy="3" rx="4" ry="5" fill="url(#tipGrad)"/>
-              <!-- Running light left -->
+              
               <circle cx="23" cy="14" r="2" fill="#00ffcc" opacity="0.8" filter="url(#engineGlow)"/>
-              <!-- Running light right -->
+              
               <circle cx="49" cy="14" r="2" fill="#00ffcc" opacity="0.8" filter="url(#engineGlow)"/>
-              <!-- Stage-2 body cylinder -->
+              
               <rect x="22" y="22" width="28" height="38" fill="url(#bodyGrad)" rx="1"/>
-              <!-- Panel seam lines -->
+              
               <line x1="36" y1="22" x2="36" y2="60" stroke="rgba(0,0,0,0.15)" stroke-width="0.8"/>
               <line x1="29" y1="22" x2="29" y2="60" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
               <line x1="43" y1="22" x2="43" y2="60" stroke="rgba(255,255,255,0.08)" stroke-width="0.5"/>
-              <!-- Rivets row -->
+              
               <circle cx="25" cy="28" r="1.2" fill="rgba(255,255,255,0.3)"/>
               <circle cx="25" cy="36" r="1.2" fill="rgba(255,255,255,0.3)"/>
               <circle cx="47" cy="28" r="1.2" fill="rgba(255,255,255,0.3)"/>
               <circle cx="47" cy="36" r="1.2" fill="rgba(255,255,255,0.3)"/>
-              <!-- Porthole window (double-ring for realism) -->
+              
               <circle cx="36" cy="40" r="10" fill="#334455" stroke="#99b0c8" stroke-width="1.5"/>
               <circle cx="36" cy="40" r="8"  fill="url(#winGrad)"/>
               <circle cx="36" cy="40" r="8"  fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1"/>
-              <!-- Window glare -->
+              
               <ellipse cx="32" cy="37" rx="3.5" ry="2" fill="rgba(255,255,255,0.5)" transform="rotate(-25 32 37)"/>
-              <!-- Red stripe band -->
+              
               <rect x="22" y="52" width="28" height="8" fill="rgba(200,30,30,0.7)" rx="0.5"/>
-              <!-- White accent on stripe -->
+              
               <rect x="22" y="55" width="28" height="2" fill="rgba(255,255,255,0.12)"/>
 
-              <!-- ── INTERSTAGE BAND ── -->
+              
               <rect x="18" y="60" width="36" height="9" fill="url(#band1Grad)" rx="1"/>
               <rect x="18" y="62" width="36" height="1" fill="rgba(0,200,150,0.35)"/>
               <rect x="18" y="66" width="36" height="1" fill="rgba(0,200,150,0.20)"/>
-              <!-- Separation bolts / notches -->
+              
               <rect x="20" y="60" width="2" height="9" fill="rgba(0,0,0,0.25)" rx="0.5"/>
               <rect x="34" y="60" width="2" height="9" fill="rgba(0,0,0,0.25)" rx="0.5"/>
               <rect x="50" y="60" width="2" height="9" fill="rgba(0,0,0,0.25)" rx="0.5"/>
 
-              <!-- ── STAGE 1 BOOSTER ── -->
-              <!-- Main booster body -->
+              
+              
               <rect x="18" y="69" width="36" height="46" fill="url(#bodyGrad)" rx="1"/>
-              <!-- Booster seam -->
+              
               <line x1="36" y1="69" x2="36" y2="115" stroke="rgba(0,0,0,0.18)" stroke-width="0.8"/>
-              <!-- Fuel-type label strip -->
+              
               <rect x="20" y="82" width="32" height="14" fill="rgba(0,0,0,0.12)" rx="1"/>
               <rect x="20" y="84" width="6" height="10" rx="1" fill="rgba(0,200,150,0.25)" stroke="rgba(0,200,150,0.4)" stroke-width="0.5"/>
               <rect x="27" y="84" width="6" height="10" rx="1" fill="rgba(80,140,255,0.22)" stroke="rgba(80,140,255,0.4)" stroke-width="0.5"/>
-              <!-- LOX/fuel vents -->
+              
               <circle cx="48" cy="75" r="2.5" fill="#334455" stroke="rgba(0,200,150,0.5)" stroke-width="0.8"/>
               <circle cx="24" cy="75" r="2.5" fill="#334455" stroke="rgba(0,200,150,0.5)" stroke-width="0.8"/>
 
-              <!-- ── GRID FINS (4 of them, stylised) ── -->
-              <!-- Left grid fin -->
+              
+              
               <g transform="translate(5,80)">
                 <rect width="13" height="22" rx="1.5" fill="url(#gridFinGrad)"/>
                 <line x1="0" y1="7"  x2="13" y2="7"  stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
@@ -1203,7 +1276,7 @@
                 <line x1="4"  y1="0" x2="4"  y2="22" stroke="rgba(0,0,0,0.2)"  stroke-width="0.8"/>
                 <line x1="9"  y1="0" x2="9"  y2="22" stroke="rgba(0,0,0,0.2)"  stroke-width="0.8"/>
               </g>
-              <!-- Right grid fin -->
+              
               <g transform="translate(54,80)">
                 <rect width="13" height="22" rx="1.5" fill="url(#gridFinGrad)"/>
                 <line x1="0" y1="7"  x2="13" y2="7"  stroke="rgba(0,0,0,0.25)" stroke-width="1"/>
@@ -1212,36 +1285,36 @@
                 <line x1="9"  y1="0" x2="9"  y2="22" stroke="rgba(0,0,0,0.2)"  stroke-width="0.8"/>
               </g>
 
-              <!-- ── LANDING LEGS (deployed) ── -->
+              
               <path d="M18 112 L4 132 L10 134 L18 115Z" fill="url(#gridFinGrad)" opacity="0.85"/>
               <path d="M54 112 L68 132 L62 134 L54 115Z" fill="url(#gridFinGrad)" opacity="0.85"/>
 
-              <!-- ── ENGINE CLUSTER ── -->
-              <!-- Engine skirt -->
+              
+              
               <path d="M16 115 L10 130 L62 130 L56 115Z" fill="url(#clusterGrad)"/>
               <rect x="16" y="113" width="40" height="5" rx="1.5" fill="#667788"/>
-              <!-- Engine bells (3) -->
+              
               <ellipse cx="25" cy="127" rx="6" ry="5" fill="#445566" stroke="#66889a" stroke-width="1"/>
               <ellipse cx="36" cy="129" rx="7" ry="6" fill="#445566" stroke="#66889a" stroke-width="1.2"/>
               <ellipse cx="47" cy="127" rx="6" ry="5" fill="#445566" stroke="#66889a" stroke-width="1"/>
-              <!-- Engine nozzle interiors -->
+              
               <ellipse cx="25" cy="127" rx="4" ry="3.5" fill="#1a2a36"/>
               <ellipse cx="36" cy="129" rx="5" ry="4.5" fill="#1a2a36"/>
               <ellipse cx="47" cy="127" rx="4" ry="3.5" fill="#1a2a36"/>
-              <!-- Bell highlight rings -->
+              
               <ellipse cx="25" cy="127" rx="4" ry="3.5" fill="none" stroke="rgba(0,200,150,0.2)" stroke-width="0.5"/>
               <ellipse cx="36" cy="129" rx="5" ry="4.5" fill="none" stroke="rgba(0,200,150,0.3)" stroke-width="0.5"/>
               <ellipse cx="47" cy="127" rx="4" ry="3.5" fill="none" stroke="rgba(0,200,150,0.2)" stroke-width="0.5"/>
 
-              <!-- Body highlight (specular shine stripe) -->
+              
               <rect x="23" y="22" width="4" height="92" rx="2" fill="rgba(255,255,255,0.09)"/>
             </svg>
             <div class="thruster"></div>
         </div>
 
-        <!-- ASTRONAUT + FLAG — anchored to top of earth -->
+        
         <div class="landing-group">
-            <!-- SVG Astronaut: detailed suit, helmet with visor, backpack, arms, legs -->
+            
             <svg class="astronaut" viewBox="0 0 72 96" fill="none" xmlns="http://www.w3.org/2000/svg">
               <defs>
                 <linearGradient id="suitGrad" x1="0" y1="0" x2="1" y2="1" gradientUnits="objectBoundingBox">
@@ -1296,7 +1369,7 @@
             </div>
         </div>
 
-        <!-- EARTH — canvas-rendered true 3D sphere -->
+        
         <div class="earth-wrapper">
           <canvas id="earthCanvas" width="300" height="300"></canvas>
         </div>
@@ -1321,7 +1394,7 @@
     </div>
     <div class="about-stats">
       <div class="orbital-system">
-        <canvas id="orbitalCanvas" width="680" height="580"></canvas>
+        <div class="orbital-wrapper"><canvas id="orbitalCanvas" width="680" height="580"></canvas></div>
       </div>
     </div>
   </div>
@@ -1567,10 +1640,7 @@
       <span class="icon">✉</span>
       paduakimberly13@gmail.com
     </a>
-   <!--<a href="tel:+639299637967" class="contact-link">
-      <span class="icon">☏</span>
-      +63 929 963 7967
-    </a>-->
+   
   </div>
 </section>
 
@@ -1583,33 +1653,33 @@
   const canvas = document.getElementById('earthCanvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
-  const W = canvas.width;   // 300
-  const H = canvas.height;  // 300
+  const W = canvas.width;   
+  const H = canvas.height;  
   const cx = W / 2, cy = H / 2, R = W / 2 - 1;
 
-  // ── Continent shapes as (lon°, lat°) polygon outlines ──────────────────
-  // lon: −180→180, lat: −90(S)→90(N)
-  // These are simplified but recognisable blobs for each continent.
+  
+  
+  
   const landPolygons = [
-    // North America
+    
     [[-168,72],[-141,60],[-130,55],[-125,50],[-122,38],[-118,25],[-100,25],[-85,25],[-82,30],[-80,35],[-76,45],[-65,47],[-60,50],[-65,60],[-80,70],[-100,72],[-130,70],[-155,70],[-168,72]],
-    // South America
+    
     [[-80,12],[-65,12],[-50,5],[-35,-5],[-38,-15],[-40,-25],[-55,-35],[-65,-55],[-70,-55],[-75,-40],[-75,-25],[-70,-10],[-80,0],[-80,12]],
-    // Europe
+    
     [[-10,38],[0,38],[10,44],[20,44],[30,48],[28,56],[22,60],[15,60],[5,58],[-2,55],[-8,50],[-10,44],[-10,38]],
-    // Africa
+    
     [[-18,18],[-10,10],[0,5],[10,5],[18,2],[22,-5],[30,-20],[35,-30],[28,-35],[20,-38],[15,-25],[10,-5],[0,5],[-18,18]],
-    // Asia (simplified, omitting islands)
+    
     [[30,72],[60,72],[90,72],[120,65],[140,60],[145,45],[135,35],[125,25],[110,20],[100,8],[95,15],[80,28],[70,40],[60,50],[40,55],[30,55],[28,56],[30,72]],
-    // Australia
+    
     [[115,-22],[122,-18],[135,-12],[138,-15],[145,-18],[148,-25],[148,-35],[138,-36],[130,-32],[120,-30],[115,-28],[115,-22]],
-    // Greenland
+    
     [[-55,82],[-20,84],[-15,78],[-25,70],[-40,65],[-50,68],[-55,72],[-55,82]],
-    // Antarctica (just a polar cap)
+    
     [[-180,-70],[180,-70],[180,-90],[-180,-90],[-180,-70]],
   ];
 
-  // ── Cloud blob centres (lon°, lat°) ─────────────────────────────────────
+  
   const cloudCenters = [
     { lon:-40, lat:55, w:28, h:12 },
     { lon:80,  lat:20, w:22, h:10 },
@@ -1620,34 +1690,34 @@
     { lon:20,  lat:-60,w:35, h:13 },
   ];
 
-  // ── Sphere helpers ────────────────────────────────────────────────────────
-  // Project (lon, lat) on the spinning globe to canvas (x, y).
-  // Returns null if the point is on the back hemisphere.
+  
+  
+  
   function project(lon, lat, rotation) {
-    const λ = (lon * Math.PI / 180) + rotation;  // adjusted lon (radians)
-    const φ = lat * Math.PI / 180;                // lat (radians)
-    // 3-D unit vector on sphere
+    const λ = (lon * Math.PI / 180) + rotation;  
+    const φ = lat * Math.PI / 180;                
+    
     const x3 = Math.cos(φ) * Math.sin(λ);
     const y3 = Math.sin(φ);
     const z3 = Math.cos(φ) * Math.cos(λ);
-    if (z3 < 0) return null;  // behind the globe
-    // Orthographic projection to 2-D
+    if (z3 < 0) return null;  
+    
     return { x: cx + R * x3, y: cy - R * y3, z3 };
   }
 
-  // ── Lighting ──────────────────────────────────────────────────────────────
-  // Sun direction in 3-D (upper-left, fixed)
+  
+  
   const sun = { x: -0.55, y: 0.6, z: 0.55 };
   const sunLen = Math.hypot(sun.x, sun.y, sun.z);
   sun.x /= sunLen; sun.y /= sunLen; sun.z /= sunLen;
 
-  // ── Draw one frame ─────────────────────────────────────────────────────────
-  let rotation = 0;  // current longitude offset (radians)
+  
+  let rotation = 0;  
 
   function drawGlobe() {
     ctx.clearRect(0, 0, W, H);
 
-    // --- 1. Ocean base sphere with radial gradient (lit side) ---
+    
     const ocean = ctx.createRadialGradient(cx - R*0.28, cy - R*0.28, R*0.05, cx, cy, R);
     ocean.addColorStop(0,    '#2a80c8');
     ocean.addColorStop(0.35, '#0d4878');
@@ -1658,19 +1728,19 @@
     ctx.fillStyle = ocean;
     ctx.fill();
 
-    // --- 2. Draw land polygons ---
+    
     for (const poly of landPolygons) {
-      // Project all vertices; skip entirely-backside polys
+      
       const pts = poly.map(([lon, lat]) => project(lon, lat, rotation));
       const visible = pts.filter(p => p !== null);
       if (visible.length < 2) continue;
 
-      // Compute average z3 for lighting
+      
       let avgZ = 0, count = 0;
       for (const p of pts) { if (p) { avgZ += p.z3; count++; } }
       avgZ /= count;
 
-      // Land lighting: bright green-teal on lit side, dark on shadow
+      
       const lightFactor = Math.max(0, Math.min(1, avgZ * 1.4));
       const r = Math.round(10  + lightFactor * 20);
       const g = Math.round(100 + lightFactor * 130);
@@ -1692,16 +1762,16 @@
       ctx.stroke();
     }
 
-    // --- 3. Clouds ---
+    
     for (const c of cloudCenters) {
-      // Animate cloud lon slowly offset
+      
       const lonShift = c.lon + (rotation * 180 / Math.PI) * 0.15;
       const ctr = project(lonShift % 360, c.lat, 0);
       if (!ctr) continue;
       const lit = Math.max(0, Math.min(1, ctr.z3 * 1.3));
       if (lit < 0.05) continue;
 
-      // Scale cloud size by how close to edge (foreshortening)
+      
       const scl = ctr.z3;
       const rw = c.w * scl;
       const rh = c.h * scl;
@@ -1717,8 +1787,8 @@
       ctx.restore();
     }
 
-    // --- 4. Terminator / night-side shadow overlay ---
-    // A radial gradient clipped to the circle fades half the globe dark
+    
+    
     const shadow = ctx.createRadialGradient(
       cx + R * 0.45, cy - R * 0.1, R * 0.3,
       cx + R * 0.45, cy - R * 0.1, R * 1.35
@@ -1735,7 +1805,7 @@
     ctx.fillRect(0, 0, W, H);
     ctx.restore();
 
-    // --- 5. Specular glint (top-left shine) ---
+    
     const glint = ctx.createRadialGradient(cx - R*0.32, cy - R*0.32, 0, cx - R*0.32, cy - R*0.32, R*0.55);
     glint.addColorStop(0,   'rgba(255,255,220,0.18)');
     glint.addColorStop(0.4, 'rgba(180,210,255,0.06)');
@@ -1748,7 +1818,7 @@
     ctx.fillRect(0, 0, W, H);
     ctx.restore();
 
-    // --- 6. Atmosphere rim (thin bright ring at edge) ---
+    
     const rim = ctx.createRadialGradient(cx, cy, R - 4, cx, cy, R + 2);
     rim.addColorStop(0,   'rgba(80,160,255,0.0)');
     rim.addColorStop(0.5, 'rgba(80,160,255,0.18)');
@@ -1759,8 +1829,8 @@
     ctx.lineWidth = 7;
     ctx.stroke();
 
-    // Advance rotation
-    rotation += 0.003;  // ~one full spin every ~35s at 60fps
+    
+    rotation += 0.003;  
   }
 
   function loop() {
@@ -1770,14 +1840,13 @@
   loop();
 })();
 
-// ── ORBITAL SYSTEM ANIMATION ──────────────────────────────────────────────
 (function() {
   const canvas = document.getElementById('orbitalCanvas');
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   const W = canvas.width, H = canvas.height;
-  // Core sits at 38% from left — gives ~260px of label room on the right,
-  // ~160px on the left (left labels point inward so they need less)
+  
+  
   const cx = W * 0.38, cy = H / 2;
 
   const nodes = [
@@ -1834,7 +1903,7 @@
     t += 1;
     pulsePhase += 0.04;
 
-    // Stars
+    
     for (const s of stars) {
       s.phase += s.speed;
       const alpha = 0.15 + 0.25 * Math.sin(s.phase);
@@ -1844,7 +1913,7 @@
       ctx.fill();
     }
 
-    // Ambient glow
+    
     const ambGlow = ctx.createRadialGradient(cx, cy, 0, cx, cy, 90);
     ambGlow.addColorStop(0,   'rgba(0,200,150,0.07)');
     ambGlow.addColorStop(0.6, 'rgba(0,100,200,0.04)');
@@ -1852,7 +1921,7 @@
     ctx.beginPath(); ctx.arc(cx, cy, 90, 0, Math.PI*2);
     ctx.fillStyle = ambGlow; ctx.fill();
 
-    // Orbit rings
+    
     for (const o of orbits) {
       ctx.save();
       ctx.translate(cx, cy);
@@ -1873,7 +1942,7 @@
       ctx.restore();
     }
 
-    // Pulsing core
+    
     const pulse = 0.5 + 0.5 * Math.sin(pulsePhase);
     ctx.beginPath();
     ctx.arc(cx, cy, 34 + pulse * 12, 0, Math.PI*2);
@@ -1904,7 +1973,7 @@
     ctx.textBaseline = 'middle';
     ctx.fillText('KP', cx, cy);
 
-    // Nodes + trails
+    
     for (const n of nodes) {
       n.angle += n.speed;
       const x = cx + Math.cos(n.angle) * n.radius;
@@ -1948,9 +2017,9 @@
       ctx.fill();
 
       const offset = n.size + 12;
-      // Always place label to the right of the node when node is right of center,
-      // left when node is left. For top/bottom nodes near cx, pick right side
-      // since we have more canvas space there.
+      
+      
+      
       const toRight = x >= cx - 20;
       const labelX = toRight ? x + offset : x - offset;
       const align  = toRight ? 'left' : 'right';
@@ -1962,13 +2031,13 @@
       const pillW = Math.max(lw1, lw2) + 20;
       const pillH = 34;
 
-      // Clamp pill so it never goes outside canvas bounds
+      
       let pillX = align === 'left' ? labelX - 6 : labelX - pillW + 6;
       pillX = Math.max(4, Math.min(W - pillW - 4, pillX));
       let pillY = y - pillH / 2;
       pillY = Math.max(4, Math.min(H - pillH - 4, pillY));
 
-      // Draw connector line from dot to pill edge
+      
       const connX = align === 'left' ? pillX : pillX + pillW;
       ctx.beginPath();
       ctx.moveTo(x, y);
@@ -1977,7 +2046,7 @@
       ctx.lineWidth = 0.7;
       ctx.stroke();
 
-      // Pill background
+      
       ctx.fillStyle = isHov ? hexAlpha(n.color, 0.13) : 'rgba(8,15,28,0.92)';
       ctx.strokeStyle = hexAlpha(n.color, isHov ? 0.6 : 0.22);
       ctx.lineWidth = 0.9;
@@ -1986,7 +2055,7 @@
       ctx.fill();
       ctx.stroke();
 
-      // Text anchored to pill, not to labelX, so it stays inside pill always
+      
       const textX = align === 'left' ? pillX + 10 : pillX + pillW - 10;
       ctx.textAlign = align;
       ctx.textBaseline = 'middle';
@@ -2002,6 +2071,58 @@
   }
 
   draw();
+})();
+
+(function() {
+  const btn = document.getElementById('navHamburger');
+  const links = document.getElementById('navLinks');
+  if (!btn || !links) return;
+  btn.addEventListener('click', function() {
+    btn.classList.toggle('active');
+    links.classList.toggle('open');
+  });
+  links.querySelectorAll('a').forEach(function(a) {
+    a.addEventListener('click', function() {
+      btn.classList.remove('active');
+      links.classList.remove('open');
+    });
+  });
+})();
+
+(function() {
+  function scaleOrbital() {
+    var wrapper = document.querySelector('.orbital-wrapper');
+    var canvas = document.getElementById('orbitalCanvas');
+    if (!wrapper || !canvas) return;
+    var cw = 680, ch = 580;
+    var vw = window.innerWidth;
+    var available;
+
+    if (vw >= 900) {
+      var secPad = vw >= 1024 ? 128 : 64;
+      var contentW = Math.min(vw, 1200) - secPad;
+      available = Math.floor((contentW - 32) / 2);
+    } else {
+      var sidePad = vw <= 480 ? 32 : vw <= 600 ? 32 : 48;
+      available = vw - sidePad;
+    }
+
+    if (available < cw) {
+      var scale = available / cw;
+      canvas.style.transform = 'scale(' + scale + ')';
+      canvas.style.transformOrigin = 'top center';
+      wrapper.style.height = Math.ceil(ch * scale) + 'px';
+    } else {
+      canvas.style.transform = '';
+      wrapper.style.height = '';
+    }
+  }
+  window.addEventListener('resize', scaleOrbital);
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', scaleOrbital);
+  } else {
+    scaleOrbital();
+  }
 })();
 </script>
 </body>
