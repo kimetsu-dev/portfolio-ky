@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Kimetsu</title>
+<title>kimetsu.dev</title>
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:ital,wght@0,300;0,400;0,500;1,400&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,400&display=swap" rel="stylesheet" />
@@ -409,6 +409,10 @@
     z-index: 1;
   }
 
+  #about {
+    overflow: visible;
+  }
+
   .section-label {
     font-family: 'DM Mono', monospace;
     font-size: 11px;
@@ -447,9 +451,10 @@
   .about-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 4rem;
-    align-items: start;
+    gap: 2rem;
+    align-items: center;
     margin-top: 3rem;
+    overflow: visible;
   }
 
   .about-text p {
@@ -461,9 +466,11 @@
   .about-text strong { color: var(--white); font-weight: 500; }
 
   .about-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    overflow: visible;
+    margin-right: -4rem;
   }
 
   .stat-card {
@@ -495,6 +502,19 @@
     line-height: 1.4;
   }
 
+  .orbital-system {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+  }
+
+  #orbitalCanvas {
+    display: block;
+    overflow: visible;
+    filter: drop-shadow(0 0 22px rgba(0,200,150,0.18));
+  }
+
   /* ── SKILLS ── */
   #skills { border-top: 1px solid var(--border); }
 
@@ -507,8 +527,14 @@
 
   .skills-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(2, 1fr);
     gap: 1.25rem;
+  }
+
+  .skills-grid .skill-card:last-child:nth-child(3n - 2) {
+    grid-column: unset;
+    max-width: unset;
+    margin: 0;
   }
 
   .skill-card {
@@ -1037,7 +1063,7 @@
       <div class="hero-tag">Available for Internship · 2026</div>
       <h1>Kimberly<br/>P. <span>Padua</span></h1>
       <p class="hero-desc">
-        BS Information Technology student at University of the Cordilleras, specializing in Web Technology. I enjoy building websites and learning new technologies — one project at a time.
+        BSIT student exploring front-end and full-stack development while building skills in creating responsive and interactive websites.
       </p>
       <div class="hero-actions">
         <a href="#contact" class="btn-primary">Get in Touch</a>
@@ -1287,31 +1313,15 @@
   <div class="about-grid">
     <div class="about-text">
       <p>
-        I'm a <strong>3rd-year BSIT student</strong> at the University of the Cordilleras in Baguio City, pursuing the Web Technology track. I grew up in Mountain Province and worked my way to the top of my class — from Valedictorian in elementary school to graduating with honors throughout high school.
+        I'm a <strong>3rd-year BSIT student</strong> at the University of the Cordilleras in Baguio City, pursuing Web Technology track. I'm currently exploring <strong>front-end development</strong> and eager to expand my skills into full-stack development.
       </p>
       <p>
-        My technical journey is rooted in a strong foundation: I completed a <strong>Computer Systems Servicing (CSS)</strong> vocational strand in senior high school, which gave me solid hands-on grounding before diving into web development.
-      </p>
-      <p>
-        I enjoy building <strong>responsive, user-focused web applications</strong> and am always eager to learn emerging technologies — from blockchain concepts to data analytics. I thrive both in collaborative teams and in self-directed environments.
+        I believe in continuous learning and am excited to grow through hands-on projects, collaborations, and real-world experience. I'm actively seeking internship opportunities to develop my skills and contribute to meaningful web applications.
       </p>
     </div>
     <div class="about-stats">
-      <div class="stat-card">
-        <div class="num">4+</div>
-        <div class="label">Years of academic excellence</div>
-      </div>
-      <div class="stat-card">
-        <div class="num">7</div>
-        <div class="label">Seminars &amp; certifications</div>
-      </div>
-      <div class="stat-card">
-        <div class="num">5+</div>
-        <div class="label">Technologies in the stack</div>
-      </div>
-      <div class="stat-card">
-        <div class="num">2026</div>
-        <div class="label">Expected graduation</div>
+      <div class="orbital-system">
+        <canvas id="orbitalCanvas" width="680" height="580"></canvas>
       </div>
     </div>
   </div>
@@ -1321,14 +1331,14 @@
 
 <section id="skills">
   <div class="section-label">Technical Skills</div>
-  <h2>What I Work With</h2>
-  <p class="skills-intro">A growing set of tools and technologies I use to build web applications from the ground up.</p>
+  <h2>What I'm Learning</h2>
+  <p class="skills-intro">Technologies and tools I've been learning and practicing — including AI tools that help me code and learn more effectively.</p>
   <div class="skills-grid">
 
     <div class="skill-card">
       <div class="skill-icon">FRONTEND</div>
-      <h3>UI Development</h3>
-      <p>Building responsive, accessible web interfaces with modern CSS and component-driven architecture.</p>
+      <h3>Frontend Basics</h3>
+      <p>Learning to build web pages and simple interfaces. Getting more comfortable with layout, styling, and adding interactivity with JavaScript.</p>
       <div class="tech-tags">
         <span class="tag">HTML5</span>
         <span class="tag">CSS3</span>
@@ -1340,8 +1350,8 @@
 
     <div class="skill-card">
       <div class="skill-icon">BACKEND</div>
-      <h3>Server-Side</h3>
-      <p>Writing server-side logic and building APIs to power dynamic, data-driven web applications.</p>
+      <h3>Backend Basics</h3>
+      <p>Starting to explore how servers and databases work. Using Firebase and Node.js in small projects to understand how the back end connects with the front.</p>
       <div class="tech-tags">
         <span class="tag">Node.js</span>
         <span class="tag">Firebase</span>
@@ -1351,47 +1361,24 @@
     </div>
 
     <div class="skill-card">
-      <div class="skill-icon">SERVICES</div>
-      <h3>Firebase &amp; Cloud</h3>
-      <p>Authentication flows, real-time database integration, cloud storage, and basic data analytics in web apps.</p>
-      <div class="tech-tags">
-        <span class="tag">Auth</span>
-        <span class="tag">Firestore</span>
-        <span class="tag">Real-time DB</span>
-      </div>
-    </div>
-
-    <div class="skill-card">
       <div class="skill-icon">TOOLS</div>
-      <h3>Dev Environment</h3>
-      <p>Using industry-standard tools for version control, collaboration, debugging, and AI-assisted development.</p>
+      <h3>Dev Tools</h3>
+      <p>Getting used to the tools developers use day-to-day — version control, code editors, and keeping track of project progress.</p>
       <div class="tech-tags">
         <span class="tag">GitHub</span>
         <span class="tag">VS Code</span>
         <span class="tag">Git</span>
-        <span class="tag">AI Dev Tools</span>
       </div>
     </div>
 
     <div class="skill-card">
-      <div class="skill-icon">INFRA</div>
-      <h3>Networking &amp; Linux</h3>
-      <p>Foundational knowledge of Linux commands, networking devices, and system configuration from Cisco training.</p>
+      <div class="skill-icon">AI TOOLS</div>
+      <h3>Exploring AI Tools</h3>
+      <p>Getting familiar with AI tools to help with coding, understanding errors, and learning new concepts faster — using them as a study aid and coding companion while building projects.</p>
       <div class="tech-tags">
-        <span class="tag">Linux CLI</span>
-        <span class="tag">Networking</span>
-        <span class="tag">Cisco IOS</span>
-      </div>
-    </div>
-
-    <div class="skill-card">
-      <div class="skill-icon">EMERGING</div>
-      <h3>Blockchain &amp; Data</h3>
-      <p>Conceptual understanding of blockchain architecture and practical exposure to Python-based data analytics and visualization.</p>
-      <div class="tech-tags">
-        <span class="tag">Blockchain 101</span>
-        <span class="tag">Python</span>
-        <span class="tag">Data Viz</span>
+        <span class="tag">Claude AI</span>
+        <span class="tag">ChatGPT</span>
+        <span class="tag">Copilot</span>
       </div>
     </div>
 
@@ -1412,7 +1399,7 @@
           <span class="proj-eyebrow">Capstone · 2025–2026</span>
           <span class="pwa-badge">PWA</span>
         </div>
-        <div class="project-name">Eco<span>Sort</span></div>
+        <div class="project-name">Eco<span>sort</span></div>
         <p class="project-blurb">A reward-based waste management platform where residents submit recyclables, earn points, redeem rewards, and report violations — with data analytics and a blockchain-inspired immutable ledger.</p>
       </div>
       <a href="https://ecosort-51471.web.app" target="_blank" rel="noopener noreferrer" class="btn-launch">
@@ -1420,7 +1407,7 @@
           <path d="M7 3H3a1 1 0 0 0-1 1v9a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V9"/>
           <path d="M10 2h4v4M14 2 8 8"/>
         </svg>
-        Launch App
+        Launch
       </a>
     </div>
 
@@ -1487,7 +1474,7 @@
         <h3>Primary School</h3>
         <div class="school">Bagnen Oriente Elementary School</div>
         <div class="location">Bagnen Oriente, Bauko, Mountain Province</div>
-        <div class="edu-badge">🏆 Valedictorian · March 2016</div>
+        <div class="edu-badge">🏆 Salutatorian · March 2016</div>
       </div>
     </div>
 
@@ -1580,10 +1567,10 @@
       <span class="icon">✉</span>
       paduakimberly13@gmail.com
     </a>
-    <a href="tel:+639299637967" class="contact-link">
+   <!--<a href="tel:+639299637967" class="contact-link">
       <span class="icon">☏</span>
       +63 929 963 7967
-    </a>
+    </a>-->
   </div>
 </section>
 
@@ -1781,6 +1768,240 @@
     requestAnimationFrame(loop);
   }
   loop();
+})();
+
+// ── ORBITAL SYSTEM ANIMATION ──────────────────────────────────────────────
+(function() {
+  const canvas = document.getElementById('orbitalCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  // Core sits at 38% from left — gives ~260px of label room on the right,
+  // ~160px on the left (left labels point inward so they need less)
+  const cx = W * 0.38, cy = H / 2;
+
+  const nodes = [
+    { label: 'BSIT Student',       sub: '3rd Year · UC Baguio',  angle: 0,                 radius: 85,  speed: 0.009,  size: 13, color: '#00c896', trail: [] },
+    { label: 'Frontend Dev',       sub: 'HTML · CSS · JS',        angle: Math.PI,           radius: 85,  speed: 0.009,  size: 13, color: '#00c896', trail: [] },
+    { label: '7 Trainings',        sub: 'Seminars & Certs',       angle: Math.PI/2,         radius: 148, speed: 0.0055, size: 12, color: '#50a0ff', trail: [] },
+    { label: 'Exploring AI',       sub: 'AI Tools & Assistance',  angle: -Math.PI/2,        radius: 148, speed: 0.0055, size: 12, color: '#50a0ff', trail: [] },
+    { label: 'Aspiring Full-Stack',sub: 'The Goal',               angle: Math.PI/4,         radius: 210, speed: 0.003,  size: 11, color: '#f5a623', trail: [] },
+    { label: 'Web Tech Track',     sub: 'UC Baguio · BSIT',       angle: Math.PI+Math.PI/4, radius: 210, speed: 0.003,  size: 11, color: '#f5a623', trail: [] },
+  ];
+
+  const orbits = [
+    { radius: 85,  color: '#00c896', alpha: 0.2,  dash: [6,5], tilt: 0.18 },
+    { radius: 148, color: '#50a0ff', alpha: 0.16, dash: [5,6], tilt: -0.12 },
+    { radius: 210, color: '#f5a623', alpha: 0.13, dash: [4,7], tilt: 0.08 },
+  ];
+
+  const stars = Array.from({ length: 28 }, () => ({
+    x: Math.random() * W,
+    y: Math.random() * H,
+    r: Math.random() * 1.2 + 0.3,
+    a: Math.random(),
+    speed: Math.random() * 0.008 + 0.002,
+    phase: Math.random() * Math.PI * 2,
+  }));
+
+  let t = 0;
+  let hovered = null;
+  let pulsePhase = 0;
+
+  canvas.addEventListener('mousemove', (e) => {
+    const rect = canvas.getBoundingClientRect();
+    const mx = (e.clientX - rect.left) * (W / rect.width);
+    const my = (e.clientY - rect.top)  * (H / rect.height);
+    hovered = null;
+    for (const n of nodes) {
+      if (!n._x) continue;
+      const dx = mx - n._x, dy = my - n._y;
+      if (Math.sqrt(dx*dx + dy*dy) < n.size + 8) { hovered = n; break; }
+    }
+    canvas.style.cursor = hovered ? 'pointer' : 'default';
+  });
+  canvas.addEventListener('mouseleave', () => { hovered = null; });
+
+  function hexAlpha(hex, a) {
+    const r = parseInt(hex.slice(1,3),16);
+    const g = parseInt(hex.slice(3,5),16);
+    const b = parseInt(hex.slice(5,7),16);
+    return `rgba(${r},${g},${b},${a})`;
+  }
+
+  function draw() {
+    ctx.clearRect(0, 0, W, H);
+    t += 1;
+    pulsePhase += 0.04;
+
+    // Stars
+    for (const s of stars) {
+      s.phase += s.speed;
+      const alpha = 0.15 + 0.25 * Math.sin(s.phase);
+      ctx.beginPath();
+      ctx.arc(s.x, s.y, s.r, 0, Math.PI*2);
+      ctx.fillStyle = `rgba(200,220,255,${alpha})`;
+      ctx.fill();
+    }
+
+    // Ambient glow
+    const ambGlow = ctx.createRadialGradient(cx, cy, 0, cx, cy, 90);
+    ambGlow.addColorStop(0,   'rgba(0,200,150,0.07)');
+    ambGlow.addColorStop(0.6, 'rgba(0,100,200,0.04)');
+    ambGlow.addColorStop(1,   'rgba(0,0,0,0)');
+    ctx.beginPath(); ctx.arc(cx, cy, 90, 0, Math.PI*2);
+    ctx.fillStyle = ambGlow; ctx.fill();
+
+    // Orbit rings
+    for (const o of orbits) {
+      ctx.save();
+      ctx.translate(cx, cy);
+      ctx.scale(1, 1 - Math.abs(o.tilt) * 0.3);
+      ctx.rotate(o.tilt);
+      ctx.beginPath();
+      ctx.arc(0, 0, o.radius + 3, 0, Math.PI*2);
+      ctx.arc(0, 0, o.radius - 3, 0, Math.PI*2, true);
+      ctx.fillStyle = hexAlpha(o.color, 0.03);
+      ctx.fill();
+      ctx.beginPath();
+      ctx.arc(0, 0, o.radius, 0, Math.PI*2);
+      ctx.strokeStyle = hexAlpha(o.color, o.alpha);
+      ctx.lineWidth = 1;
+      ctx.setLineDash(o.dash);
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.restore();
+    }
+
+    // Pulsing core
+    const pulse = 0.5 + 0.5 * Math.sin(pulsePhase);
+    ctx.beginPath();
+    ctx.arc(cx, cy, 34 + pulse * 12, 0, Math.PI*2);
+    ctx.strokeStyle = `rgba(0,200,150,${0.06 + pulse * 0.06})`;
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    const coreGlow = ctx.createRadialGradient(cx, cy, 0, cx, cy, 46 + pulse * 8);
+    coreGlow.addColorStop(0,   `rgba(0,200,150,${0.3 + pulse * 0.12})`);
+    coreGlow.addColorStop(0.45,'rgba(0,200,150,0.08)');
+    coreGlow.addColorStop(1,   'rgba(0,200,150,0)');
+    ctx.beginPath(); ctx.arc(cx, cy, 46 + pulse * 8, 0, Math.PI*2);
+    ctx.fillStyle = coreGlow; ctx.fill();
+    ctx.beginPath(); ctx.arc(cx, cy, 26, 0, Math.PI*2);
+    const diskGrad = ctx.createRadialGradient(cx-6, cy-6, 1, cx, cy, 26);
+    diskGrad.addColorStop(0, '#1a3040');
+    diskGrad.addColorStop(1, '#0a1520');
+    ctx.fillStyle = diskGrad;
+    ctx.strokeStyle = `rgba(0,200,150,${0.5 + pulse * 0.35})`;
+    ctx.lineWidth = 2;
+    ctx.fill(); ctx.stroke();
+    ctx.beginPath(); ctx.arc(cx, cy, 18, 0, Math.PI*2);
+    ctx.strokeStyle = `rgba(0,200,150,${0.15 + pulse * 0.1})`;
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    ctx.font = `bold 14px "DM Mono", monospace`;
+    ctx.fillStyle = `rgba(0,200,150,${0.8 + pulse * 0.2})`;
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+    ctx.fillText('KP', cx, cy);
+
+    // Nodes + trails
+    for (const n of nodes) {
+      n.angle += n.speed;
+      const x = cx + Math.cos(n.angle) * n.radius;
+      const y = cy + Math.sin(n.angle) * n.radius;
+      n._x = x; n._y = y;
+
+      n.trail.push({ x, y });
+      if (n.trail.length > 22) n.trail.shift();
+
+      for (let i = 1; i < n.trail.length; i++) {
+        const prog = i / n.trail.length;
+        ctx.beginPath();
+        ctx.moveTo(n.trail[i-1].x, n.trail[i-1].y);
+        ctx.lineTo(n.trail[i].x, n.trail[i].y);
+        ctx.strokeStyle = hexAlpha(n.color, prog * 0.35);
+        ctx.lineWidth = prog * 2.5;
+        ctx.lineCap = 'round';
+        ctx.stroke();
+      }
+
+      const isHov = hovered === n;
+      const haloR = isHov ? 24 : 16;
+      const halo = ctx.createRadialGradient(x, y, 0, x, y, haloR);
+      halo.addColorStop(0,   hexAlpha(n.color, isHov ? 0.45 : 0.28));
+      halo.addColorStop(0.5, hexAlpha(n.color, 0.08));
+      halo.addColorStop(1,   hexAlpha(n.color, 0));
+      ctx.beginPath(); ctx.arc(x, y, haloR, 0, Math.PI*2);
+      ctx.fillStyle = halo; ctx.fill();
+
+      const dotR = isHov ? n.size + 4 : n.size;
+      const dotGrad = ctx.createRadialGradient(x - dotR*0.3, y - dotR*0.3, 1, x, y, dotR);
+      dotGrad.addColorStop(0, hexAlpha(n.color, 0.3));
+      dotGrad.addColorStop(1, '#0a1520');
+      ctx.beginPath(); ctx.arc(x, y, dotR, 0, Math.PI*2);
+      ctx.fillStyle = dotGrad;
+      ctx.strokeStyle = hexAlpha(n.color, isHov ? 1 : 0.75);
+      ctx.lineWidth = isHov ? 2.5 : 1.8;
+      ctx.fill(); ctx.stroke();
+      ctx.beginPath(); ctx.arc(x - dotR*0.25, y - dotR*0.25, dotR * 0.28, 0, Math.PI*2);
+      ctx.fillStyle = hexAlpha(n.color, 0.55);
+      ctx.fill();
+
+      const offset = n.size + 12;
+      // Always place label to the right of the node when node is right of center,
+      // left when node is left. For top/bottom nodes near cx, pick right side
+      // since we have more canvas space there.
+      const toRight = x >= cx - 20;
+      const labelX = toRight ? x + offset : x - offset;
+      const align  = toRight ? 'left' : 'right';
+
+      ctx.font = `600 11px "DM Mono", monospace`;
+      const lw1 = ctx.measureText(n.label).width;
+      ctx.font = '9.5px "DM Sans", sans-serif';
+      const lw2 = ctx.measureText(n.sub).width;
+      const pillW = Math.max(lw1, lw2) + 20;
+      const pillH = 34;
+
+      // Clamp pill so it never goes outside canvas bounds
+      let pillX = align === 'left' ? labelX - 6 : labelX - pillW + 6;
+      pillX = Math.max(4, Math.min(W - pillW - 4, pillX));
+      let pillY = y - pillH / 2;
+      pillY = Math.max(4, Math.min(H - pillH - 4, pillY));
+
+      // Draw connector line from dot to pill edge
+      const connX = align === 'left' ? pillX : pillX + pillW;
+      ctx.beginPath();
+      ctx.moveTo(x, y);
+      ctx.lineTo(connX, pillY + pillH / 2);
+      ctx.strokeStyle = hexAlpha(n.color, 0.18);
+      ctx.lineWidth = 0.7;
+      ctx.stroke();
+
+      // Pill background
+      ctx.fillStyle = isHov ? hexAlpha(n.color, 0.13) : 'rgba(8,15,28,0.92)';
+      ctx.strokeStyle = hexAlpha(n.color, isHov ? 0.6 : 0.22);
+      ctx.lineWidth = 0.9;
+      ctx.beginPath();
+      ctx.roundRect(pillX, pillY, pillW, pillH, 5);
+      ctx.fill();
+      ctx.stroke();
+
+      // Text anchored to pill, not to labelX, so it stays inside pill always
+      const textX = align === 'left' ? pillX + 10 : pillX + pillW - 10;
+      ctx.textAlign = align;
+      ctx.textBaseline = 'middle';
+      ctx.font = `${isHov ? 700 : 600} 11px "DM Mono", monospace`;
+      ctx.fillStyle = isHov ? n.color : '#dde6f8';
+      ctx.fillText(n.label, textX, pillY + pillH * 0.36);
+      ctx.font = '9.5px "DM Sans", sans-serif';
+      ctx.fillStyle = isHov ? hexAlpha(n.color, 0.75) : '#6a7a96';
+      ctx.fillText(n.sub, textX, pillY + pillH * 0.68);
+    }
+
+    requestAnimationFrame(draw);
+  }
+
+  draw();
 })();
 </script>
 </body>
